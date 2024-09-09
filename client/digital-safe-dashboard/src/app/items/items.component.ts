@@ -1,12 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
 import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-items',
-  standalone: true,
-  imports: [],
-  templateUrl: './items.component.html',
-  styleUrl: './items.component.css'
+  templateUrl: './items.component.html'
 })
 export class ItemsComponent implements OnInit {
   items = [];
@@ -15,12 +13,19 @@ export class ItemsComponent implements OnInit {
   value = '';
   showForm = false;
 
-  constructor(private authService: AuthService) {}
+  constructor(
+    private authService: AuthService,
+    private router: Router,
+    private activatedRoute: ActivatedRoute
+  ) {}
 
   ngOnInit() {
-    this.type = this.router.url.includes('keys') ? 'key' : 'password';
-    this.authService.getKeysOrPasswords().subscribe(data => {
-      this.items = data;
+    // Determine the type based on the route URL
+    this.type = this.activatedRoute.snapshot.routeConfig?.path === 'keys' ? 'key' : 'password';
+
+    // Fetch items based on the determined type
+    this.authService.getKeysOrPasswords().subscribe((data: any) => {
+      this.items = data.items;  // Assuming the response has an 'items' field
     });
   }
 

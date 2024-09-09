@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
-
 import { AppRoutingRoutingModule } from './app-routing-routing.module';
 import { DashboardComponent } from '../dashboard/dashboard.component';
 import { ItemsComponent } from '../items/items.component';
@@ -19,6 +18,7 @@ const routes: Routes = [
     CommonModule,
     RouterModule.forRoot(routes),
     AppRoutingRoutingModule
-  ]
+  ],
+  exports: [RouterModule]
 })
 export class AppRoutingModule { }
