@@ -59,3 +59,42 @@ def login():
         return jsonify(access_token=access_token), 200
     else:
         return jsonify(message="Invalid credentials"), 401
+
+@app.route('/api/items', methods=['GET', 'POST'])
+@jwt_required()
+def manage_items():
+    user_id = get_jwt_identity()
+
+    if request.method == 'POST':
+        # Add a new key/password
+        data = request.get_json()
+        item_type = data['type']  # 'key' or 'password'
+        app_name = data['app_name']
+        value = data['value']
+
+        # Encrypt the value
+        encrypted_value = cipher_suite.encrypt(value.encode()).decode('utf-8')
+
+        cur = mysql.connection.cursor()
+        cur.execute("INSERT INTO data_store (user_id, type, app_name, encrypted_value) VALUES (%s, %s, %s, %s)",
+                    (user_id, item_type, app_name, encrypted_value))
+        mysql.connection.commit()
+        cur.close()
+
+        return jsonify(message="Item added successfully"), 201
+
+    else:
+        # Fetch all keys/passwords
+        cur = mysql.connection.cursor()
+        cur.execute("SELECT * FROM data_store WHERE user_id = %s", (user_id,))
+        items = cur.fetchall()
+        cur.close()
+
+        # Decrypt the values before sending to the client
+        for item in items:
+            item['encrypted_value'] = cipher_suite.decrypt(item['encrypted_value'].encode()).decode('utf-8')
+
+        return jsonify(items=items), 200
+
+if __name__ == '__main__':
+    app.run(debug=True)
