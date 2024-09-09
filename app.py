@@ -34,10 +34,28 @@ def signup():
     password = data['password']
 
     hashed_password = bcrypt.generate_password_hash(password).decode('utf-8')
-    
+
     cur = mysql.connection.cursor()
     cur.execute("INSERT INTO users (email, password_hash) VALUES (%s, %s)", (email, hashed_password))
     mysql.connection.commit()
     cur.close()
 
     return jsonify(message="User registered successfully"), 201
+
+
+@app.route('/api/login', methods=['POST'])
+def login():
+    data = request.get_json()
+    email = data['email']
+    password = data['password']
+
+    cur = mysql.connection.cursor()
+    cur.execute("SELECT * FROM users WHERE email=%s", (email,))
+    user = cur.fetchone()
+    cur.close()
+
+    if user and bcrypt.check_password_hash(user['password_hash'], password):
+        access_token = create_access_token(identity=user['id'])
+        return jsonify(access_token=access_token), 200
+    else:
+        return jsonify(message="Invalid credentials"), 401
