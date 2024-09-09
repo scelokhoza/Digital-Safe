@@ -25,3 +25,19 @@ mysql = MySQL(app)
 
 ENCRYPTION_KEY = os.getenv('ENCRYPTION_KEY')
 cipher_suite = Fernet(ENCRYPTION_KEY)
+
+
+@app.route('/api/signup', methods=['POST'])
+def signup():
+    data = request.get_json()
+    email = data['email']
+    password = data['password']
+
+    hashed_password = bcrypt.generate_password_hash(password).decode('utf-8')
+    
+    cur = mysql.connection.cursor()
+    cur.execute("INSERT INTO users (email, password_hash) VALUES (%s, %s)", (email, hashed_password))
+    mysql.connection.commit()
+    cur.close()
+
+    return jsonify(message="User registered successfully"), 201
