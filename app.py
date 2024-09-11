@@ -98,3 +98,6 @@ def manage_items():
 
 if __name__ == '__main__':
     app.run(debug=True)
+
+
+#mysql -u root -p < setup.sql

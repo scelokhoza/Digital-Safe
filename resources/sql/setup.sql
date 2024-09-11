@@ -17,3 +17,5 @@ CREATE TABLE data_store(
     encrypted_value TEXT NOT NULL,
     FOREIGN KEY (user_id) REFERENCES users(id)
 );
+
+
