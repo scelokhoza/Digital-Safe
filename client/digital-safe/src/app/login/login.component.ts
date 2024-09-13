@@ -4,15 +4,8 @@ import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-login',
-  template: `
-    <h2>Login</h2>
-    <form (ngSubmit)="onSubmit()">
-      <input [(ngModel)]="email" name="email" type="email" placeholder="Email" required>
-      <input [(ngModel)]="password" name="password" type="password" placeholder="Password" required>
-      <button type="submit">Login</button>
-    </form>
-    <p>Don't have an account? <a routerLink="/signup">Sign up</a></p>
-  `
+  template: './login.component.html',
+  styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
   email: string = '';
