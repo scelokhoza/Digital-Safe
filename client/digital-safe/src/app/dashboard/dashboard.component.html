@@ -1,1 +1,31 @@
-<p>dashboard works!</p>
+<div class="dashboard-container">
+    <h2>Password Safe Dashboard</h2>
+    <button (click)="logout()" class="btn-logout">Logout</button>
+
+    <h3>Add New Item</h3>
+    <form (ngSubmit)="addItem()" class="add-item-form">
+      <div class="input-group">
+        <label for="type">Item Type</label>
+        <select [(ngModel)]="newItem.type" name="type" id="type" class="form-select">
+          <option value="key">Key</option>
+          <option value="password">Password</option>
+        </select>
+      </div>
+
+      <div class="input-group">
+        <input [(ngModel)]="newItem.app_name" name="app_name" placeholder="App Name" class="form-input" required>
+      </div>
+      <div class="input-group">
+        <input [(ngModel)]="newItem.value" name="value" placeholder="Value" class="form-input" required>
+      </div>
+
+      <button type="submit" class="btn-add-item">Add Item</button>
+    </form>
+
+    <h3>Stored Items</h3>
+    <ul class="items-list">
+      <li *ngFor="let item of items" class="item">
+        <strong>{{ item.app_name }}</strong> ({{ item.type }}): <span>{{ item.encrypted_value }}</span>
+      </li>
+    </ul>
+  </div>

@@ -3,26 +3,8 @@ import { ItemService } from '../item.service';
 
 @Component({
   selector: 'app-dashboard',
-  template: `
-    <h2>Password Safe Dashboard</h2>
-    <button (click)="logout()">Logout</button>
-    <h3>Add New Item</h3>
-    <form (ngSubmit)="addItem()">
-      <select [(ngModel)]="newItem.type" name="type">
-        <option value="key">Key</option>
-        <option value="password">Password</option>
-      </select>
-      <input [(ngModel)]="newItem.app_name" name="app_name" placeholder="App Name" required>
-      <input [(ngModel)]="newItem.value" name="value" placeholder="Value" required>
-      <button type="submit">Add Item</button>
-    </form>
-    <h3>Stored Items</h3>
-    <ul>
-      <li *ngFor="let item of items">
-        {{ item.app_name }} ({{ item.type }}): {{ item.encrypted_value }}
-      </li>
-    </ul>
-  `
+  template: './dashboard.component.html',
+  styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
   items: any[] = [];
