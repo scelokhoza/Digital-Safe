@@ -4,7 +4,6 @@ import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { LoginResponse } from './LoginResponse.model';
 
-
 @Injectable({
   providedIn: 'root'
 })
@@ -21,20 +20,34 @@ export class AuthService {
     return this.http.post<LoginResponse>(`${this.apiUrl}/login`, { email, password })
       .pipe(
         tap(response => {
-          localStorage.setItem('access_token', response.access_token);
+          if (this.isBrowserEnvironment()) {
+            localStorage.setItem('access_token', response.access_token);
+          }
         })
       );
   }
 
   logout(): void {
-    localStorage.removeItem('access_token');
+    if (this.isBrowserEnvironment()) {
+      localStorage.removeItem('access_token');
+    }
   }
 
   isLoggedIn(): boolean {
-    return !!localStorage.getItem('access_token');
+    if (this.isBrowserEnvironment()) {
+      return !!localStorage.getItem('access_token');
+    }
+    return false;
   }
 
   getToken(): string | null {
-    return localStorage.getItem('access_token');
+    if (this.isBrowserEnvironment()) {
+      return localStorage.getItem('access_token');
+    }
+    return null;
+  }
+
+  private isBrowserEnvironment(): boolean {
+    return typeof window !== 'undefined' && typeof localStorage !== 'undefined';
   }
 }
