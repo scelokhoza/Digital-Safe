@@ -1,9 +1,13 @@
 import { Component, OnInit } from '@angular/core';
+import { NgFor } from '@angular/common';
 import { ItemService } from '../item.service';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-dashboard',
-  template: './dashboard.component.html',
+  standalone: true,
+  templateUrl: './dashboard.component.html',
+  imports: [FormsModule, NgFor],
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {

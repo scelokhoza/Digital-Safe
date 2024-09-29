@@ -2,10 +2,13 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../auth.service';
 import { LoginResponse } from '../LoginResponse.model';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
-  template: './login.component.html',
+  standalone: true,
+  templateUrl: './login.component.html',
+  imports: [FormsModule],
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
