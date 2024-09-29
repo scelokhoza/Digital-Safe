@@ -2,6 +2,7 @@ import os
 from dotenv import load_dotenv
 from flask_bcrypt import Bcrypt
 from flask_mysqldb import MySQL
+from flask_cors import CORS
 from cryptography.fernet import Fernet
 from flask import Flask, request, jsonify
 from flask_jwt_extended import JWTManager, create_access_token, jwt_required, get_jwt_identity
@@ -26,6 +27,7 @@ mysql = MySQL(app)
 ENCRYPTION_KEY = os.getenv('ENCRYPTION_KEY')
 cipher_suite = Fernet(ENCRYPTION_KEY)
 
+CORS(app, resources={r"/api/*": {"origins": "http://localhost:4200"}})
 
 @app.route('/api/signup', methods=['POST'])
 def signup():
