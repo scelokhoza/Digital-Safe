@@ -1,6 +1,6 @@
-CREATE DATABASE safe_db;
+CREATE DATABASE safe_database;
 
-USE safe_db;
+USE safe_database;
 
 CREATE TABLE users (
     id INT PRIMARY KEY AUTO_INCREMENT,

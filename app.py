@@ -27,7 +27,7 @@ mysql = MySQL(app)
 ENCRYPTION_KEY = os.getenv('ENCRYPTION_KEY')
 cipher_suite = Fernet(ENCRYPTION_KEY)
 
-CORS(app, resources={r"/api/*": {"origins": "http://localhost:4200"}})
+CORS(app, resources={r"/*": {"origins": "*", "headers": "Content-Type"}})
 
 @app.route('/api/signup', methods=['POST'])
 def signup():
