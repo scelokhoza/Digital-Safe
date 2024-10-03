@@ -8,7 +8,8 @@ got to [Digital-Safe](https://github.com/scelokhoza/Digital-Safe) to run the the
 [Digital-Safe]() is a program that allows you save long or forgettable keys and passwords especially those that you do not use on a regualar bases. As the name says Digital-Safe, it acts like a safe where it stores keys and passwords for later access when you need them. The whole point is to store keys and passwords that are long and forgettable like block-chain keys or whatsapps passwords as they cannot be stored in google.
 
 
-![Screenshot from 2024-10-03 10-10-45](https://github.com/user-attachments/assets/1539a08f-8575-412d-b529-fe16b7aa3ed8)
+![Screenshot from 2024-10-03 12-23-54](https://github.com/user-attachments/assets/2b1a0990-0a03-4574-9098-a67c10a5db51)
+
 
 
 
@@ -74,7 +75,11 @@ For more examples, please refer to the project's [Wiki](wiki) or [documentation 
 - [Flask](https://flask.palletsprojects.com/en/3.0.x/): ![Flask](https://img.shields.io/badge/Flask-000000?style=for-the-badge&logo=flask&logoColor=white)
 - [HTML](https://html.com/): ![HTML](https://img.shields.io/badge/HTML-E34F26?style=for-the-badge&logo=html5&logoColor=white)
 - [CSS](https://css-tricks.com/): ![CSS](https://img.shields.io/badge/CSS-1572B6?style=for-the-badge&logo=css3&logoColor=white)
-- [AJAX](https://api.jquery.com/jQuery.ajax/): ![AJAX](https://img.shields.io/badge/AJAX-1572B6?style=for-the-badge&logo=ajax&logoColor=white)
+- ![Angular](https://img.shields.io/badge/Angular-DD0031?style=for-the-badge&logo=angular&logoColor=white)
+- ![MySQL](https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=mysql&logoColor=white)
+- ![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white)
+
+
 
 ## Features
 
