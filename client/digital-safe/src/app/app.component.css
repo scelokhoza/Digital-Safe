@@ -5,25 +5,25 @@ body {
     margin: 0;
     padding: 0;
   }
-  
+
   header {
     background-color: #4a90e2;
     color: white;
     padding: 10px;
     text-align: center;
   }
-  
+
   .nav-list {
     list-style-type: none;
     padding: 0;
     display: flex;
     justify-content: center;
   }
-  
+
   .nav-list li {
     margin: 0 10px;
   }
-  
+
   .nav-list a {
     color: white;
     text-decoration: none;
@@ -32,21 +32,21 @@ body {
     border-radius: 4px;
     transition: background-color 0.3s ease;
   }
-  
+
   .nav-list a:hover {
     background-color: #357abd;
   }
-  
+
   .active-link {
     font-weight: bold;
     color: #4a90e2;
   }
-  
+
   main {
     padding: 20px;
     min-height: 80vh;
   }
-  
+
   footer {
     background-color: #f7f7f7;
     text-align: center;
@@ -54,4 +54,3 @@ body {
     border-top: 1px solid #e0e0e0;
     margin-top: 20px;
   }
-  
