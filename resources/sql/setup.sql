@@ -1,4 +1,4 @@
-CREATE DATABASE safe_database;
+-- CREATE DATABASE safe_database;
 
 USE safe_database;
 
